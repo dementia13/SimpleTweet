@@ -1,4 +1,4 @@
-package com.codepath.apps.restclienttemplate.models;
+package com.codepath.apps.restclienttemplate.adapters;
 
 import android.content.Context;
 import android.util.Log;
@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.codepath.apps.restclienttemplate.R;
+import com.codepath.apps.restclienttemplate.models.Tweet;
 
 import java.util.List;
 
@@ -80,7 +81,7 @@ public class TweetsAdapter extends RecyclerView.Adapter<TweetsAdapter.ViewHolder
         private void bind(Tweet tweet) {
             tvBody.setText(tweet.body);
             tvScreenName.setText(tweet.user.screenName);
-            tvTime.setText(tweet.getFormattedTimestamp(tweet.createdAt));
+            tvTime.setText(Tweet.getFormattedTimestamp(tweet.createdAt));
             Log.d("createdAt", tweet.createdAt);
             Glide.with(context).load(tweet.user.publicImageUrl).into(ivProfileImage);
         }

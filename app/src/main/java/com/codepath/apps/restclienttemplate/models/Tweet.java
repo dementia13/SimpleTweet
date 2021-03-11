@@ -1,29 +1,51 @@
 package com.codepath.apps.restclienttemplate.models;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.parceler.Parcel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+@Parcel
+@Entity(foreignKeys = @ForeignKey(entity = User.class, parentColumns = "id", childColumns = "userId"))
 public class Tweet {
 
     private static TimeFormatter timeFormatter;
-    public String body;
-    public String createdAt;
-    public User user;
+
+    @ColumnInfo
+    @PrimaryKey
     public long tweetId;
+
+    @ColumnInfo
+    public String body;
+    @ColumnInfo
+    public String createdAt;
+    @ColumnInfo
+    public long userId;
+
+    @Ignore
+    public static User user;
+
+    // empty constructor needed by parcel library
+    public Tweet() { }
+
+    public static final int MAX_TWEET_LENGTH = 280;
 
     public static Tweet fromJson(JSONObject jsonObject) throws JSONException {
         Tweet tweet = new Tweet();
         tweet.body = jsonObject.getString("text");
         tweet.createdAt = jsonObject.getString("created_at");
-        tweet.user = User.fromJson(jsonObject.getJSONObject("user"));
         tweet.tweetId = jsonObject.getLong("id");
+        User user = User.fromJson(jsonObject.getJSONObject("user"));
+        tweet.userId = user.id;
         return tweet;
     }
 
@@ -36,7 +58,7 @@ public class Tweet {
     }
 
     public static String getFormattedTimestamp(String createdAt){
-        return  timeFormatter.getTimeDifference(createdAt);
+        return  TimeFormatter.getTimeDifference(createdAt);
     }
 
     /*
