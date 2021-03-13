@@ -23,9 +23,8 @@ import java.util.List;
         // Record finders
         //@Query("SELECT * FROM Tweet WHERE post_id = :tweetId")
         //Tweet byTweetId(long tweetId);
-
-        @Query("SELECT Tweet.body AS tweet__body, Tweet.createdAt AS tweet_createdAt, Tweet.tweetId AS tweet_tweetId, User.* " +
-                " FROM Tweet INNER JOIN User ON Tweet.userId = User.id ORDER BY createdAt DESC LIMIT 5")
+/*
+        @Query("SELECT Tweet.body AS tweet_body, Tweet.createdAt AS tweet_createdAt, Tweet.tweetId AS tweet_tweetId, User.*  FROM Tweet INNER JOIN User ON userId = User.id ORDER BY createdAt DESC LIMIT 5")
         List<TweetWithUser> recentItems();
 
         // Replace strategy is needed to ensure an update on the table row
@@ -35,5 +34,5 @@ import java.util.List;
 
         @Insert(onConflict = OnConflictStrategy.REPLACE)
         void insertModel(User... users);
-
+*/
 }

@@ -14,7 +14,7 @@ public class TweetWithUser {
     @Embedded(prefix = "tweet_")
     public Tweet tweet;
 
-    public static List<Tweet> getTweetList(java.util.List<TweetWithUser> tweetWithUsers) {
+    public static List<Tweet> getTweetList(List<TweetWithUser> tweetWithUsers) {
         List<Tweet> tweets = new ArrayList<>();
         for (int i = 0; i < tweetWithUsers.size(); i++){
             Tweet tweet = tweetWithUsers.get(i).tweet;

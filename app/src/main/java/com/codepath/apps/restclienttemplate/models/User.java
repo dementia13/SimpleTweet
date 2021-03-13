@@ -32,7 +32,7 @@ public class User {
     // normally this field would be annotated @PrimaryKey because this is an embedded object
     // it is not needed
     @ColumnInfo
-    public Long twitter_id;
+    public long twitter_id;
 /*
     // Parse model from JSON
     public static User parseJSON(JSONObject tweetJson) {
@@ -56,7 +56,7 @@ public class User {
         List<User> users = new ArrayList<>();
         for(int i = 0; i < tweetsFromNetwork.size(); i++) {
             //users.add(tweetsFromNetwork.get(i).user);
-            users.add(Tweet.user);
+            users.add(tweetsFromNetwork.get(i).user);
         }
         return users;
     }
