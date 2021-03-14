@@ -74,11 +74,18 @@ The following **additional** features are implemented:
 
 ## Video Walkthrough
 
-None available
+Here's a walkthrough that shows the operational compose function:
+
+<img src='https://submissions.us-east-1.linodeobjects.com/android_university/4OuDJtxF.gif' title='demo4' width='' alt='Video Walkthrough' />
+
+GIF created with [ScreentoGif].
+
 
 ## Notes
 
-Had app in functional state: could compose a tweet, character counter functional, on posting would return to the main timeline with the new tweet at top. ActionBar and compose window are styled with Twitter blue. When I tried to implement persistence, the app began to crash on launch and I am unable to roll back the changes. Someone on Slack had similar issues, but the recommended fixes did not work for me. Some of the logcat error entries suggest low memory; my phone is absurdly low on memory. Am submitting in unfinished state.
+Had app in functional state: could compose a tweet, character counter functional, on posting would return to the main timeline with the new tweet at top. ActionBar and compose window are styled with Twitter blue. When I tried to implement persistence, the app began to crash on launch. Someone on Slack had similar issues, but the recommended fixes did not work for me. Was not able to get working in time, submitted in unfinished state, As I didn't have a working video, a resubmit was requested.
+
+This version works, but it didn't behave this particular time. The timeline loads, but it's ordered by user instead of by timestamp. This time it didn't display at all, other than to show my newly-posted tweet. The video does display tweet creation, word count, styling, and the tweet automatically displaying at the top of the timeline.
 
 ## Open-source libraries used
 
