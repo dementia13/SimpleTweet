@@ -45,6 +45,7 @@ public class Tweet {
         tweet.createdAt = jsonObject.getString("created_at");
         tweet.tweetId = jsonObject.getLong("id");
         User user = User.fromJson(jsonObject.getJSONObject("user"));
+        tweet.user = user;
         tweet.userId = user.id;
         return tweet;
     }

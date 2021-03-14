@@ -31,22 +31,22 @@ public class User {
 
     // normally this field would be annotated @PrimaryKey because this is an embedded object
     // it is not needed
-    @ColumnInfo
-    public long twitter_id;
-/*
+    //@ColumnInfo
+    //public long twitter_id;
+
     // Parse model from JSON
-    public static User parseJSON(JSONObject tweetJson) {
+    public static User parseJSON(JSONObject tweetJson) throws JSONException {
 
         User user = new User();
-        //this.twitter_id = tweetJson.getLong("id");
-       // this.name = tweetJson.getString("name");
+        user.id = tweetJson.getLong("id");
+        user.name = tweetJson.getString("name");
         return user;
     }
-*/
+
     public static User fromJson(JSONObject jsonObject) throws JSONException {
         User user = new User();
-        user.id = jsonObject.getLong("id");
         user.name = jsonObject.getString("name");
+        user.id = jsonObject.getLong("id");
         user.screenName = jsonObject.getString("screen_name");
         user.publicImageUrl = jsonObject.getString("profile_image_url_https");
         return user;
@@ -55,7 +55,6 @@ public class User {
     public static List<User> fromJsonTweetArray(List<Tweet> tweetsFromNetwork) {
         List<User> users = new ArrayList<>();
         for(int i = 0; i < tweetsFromNetwork.size(); i++) {
-            //users.add(tweetsFromNetwork.get(i).user);
             users.add(tweetsFromNetwork.get(i).user);
         }
         return users;

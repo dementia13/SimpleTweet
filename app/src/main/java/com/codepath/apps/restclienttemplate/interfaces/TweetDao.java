@@ -17,14 +17,11 @@ import java.util.List;
         //@Query("SELECT * FROM Tweet ORDER BY createdAt DESC LIMIT 300")
         //List<TweetWithUser> recentItems();
 
-        // @Query annotation requires knowing SQL syntax
-        // See http://www.sqltutorial.org/
-
         // Record finders
         //@Query("SELECT * FROM Tweet WHERE post_id = :tweetId")
         //Tweet byTweetId(long tweetId);
-/*
-        @Query("SELECT Tweet.body AS tweet_body, Tweet.createdAt AS tweet_createdAt, Tweet.tweetId AS tweet_tweetId, User.*  FROM Tweet INNER JOIN User ON userId = User.id ORDER BY createdAt DESC LIMIT 5")
+
+        @Query("SELECT Tweet.body AS tweet_body, Tweet.createdAt AS tweet_createdAt, Tweet.tweetId AS tweet_tweetId, User.* FROM Tweet INNER JOIN User ON userId = User.id ORDER BY createdAt DESC LIMIT 5")
         List<TweetWithUser> recentItems();
 
         // Replace strategy is needed to ensure an update on the table row
@@ -34,5 +31,5 @@ import java.util.List;
 
         @Insert(onConflict = OnConflictStrategy.REPLACE)
         void insertModel(User... users);
-*/
+
 }
